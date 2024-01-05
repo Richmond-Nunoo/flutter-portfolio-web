@@ -4,6 +4,7 @@ import 'package:portfolio/desktop/contact_section.dart';
 import 'package:portfolio/desktop/home_section.dart';
 import 'package:portfolio/desktop/projects_section.dart';
 import 'package:portfolio/desktop/services_section.dart';
+import 'package:portfolio/mobile/mobile_home_Section.dart';
 import 'package:portfolio/responsive.dart';
 import 'package:url_launcher/url_launcher.dart';
 // ignore: avoid_web_libraries_in_flutter
@@ -76,8 +77,24 @@ class _HomePageState extends State<HomePage> {
               controller: _scrollController,
               child: Column(
                 children: [
-                  // Section 0: About
-                  _buildSection("Home", Colors.blue),
+                  // Section 0: Home
+                  MobileHomePage(
+                    tapContactInfoCallback: () {
+                      setState(() {
+                        _scrollToSection(4);
+                        activeSectionIndex = 4; // Update activeSectionIndex
+                      });
+                    },
+                    linkedInTapCallBack: () async {
+                      await _launchLinkedInUrl();
+                    },
+                    githubTapCallBack: () async {
+                      await _launchGitHubUrl();
+                    },
+                    getCvLink: () {
+                      html.window.open(_cvLink, "text");
+                    },
+                  ),
                   // Section 0: About
                   _buildSection("About", Colors.blue),
 
