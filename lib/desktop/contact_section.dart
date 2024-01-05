@@ -77,7 +77,7 @@ class ContactSection extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        "Follow in Social Media",
+                        "Follow on Social Media",
                         style: TextStyle(
                             fontSize: 14, fontWeight: FontWeight.bold),
                       ),

@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade100.withOpacity(0.1),
+      backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
         backgroundColor: Colors.blue.shade100,
         automaticallyImplyLeading: false,
@@ -101,7 +101,6 @@ class _HomePageState extends State<HomePage> {
                     tapContactInfoCallback: () {
                       setState(() {
                         _scrollToSection(4);
-
                         activeSectionIndex = 4; // Update activeSectionIndex
                       });
                     },
@@ -123,14 +122,6 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
     );
-  }
-
-  Future<void> _launchCv() async {
-    if (await canLaunchUrl(Uri.file(_cvLink))) {
-      await launchUrl(Uri.file(_cvLink));
-    } else {
-      print("Error");
-    }
   }
 
   Future<void> _launchLinkedInUrl() async {

@@ -39,7 +39,7 @@ class AboutUserSection extends StatelessWidget {
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(
-                      "assets/about-pic.png",
+                      "assets/about.png",
                     ),
                     fit: BoxFit.fill,
                   ),
