@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/constants/app_constants.dart';
-import 'package:portfolio/mainpage/desktop_screen.dart';
+import 'package:portfolio/desktop/about_section.dart';
+import 'package:portfolio/desktop/contact_section.dart';
+import 'package:portfolio/desktop/home_section.dart';
+import 'package:portfolio/desktop/projects_section.dart';
+import 'package:portfolio/desktop/services_section.dart';
 import 'package:portfolio/responsive.dart';
+import 'package:url_launcher/url_launcher.dart';
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:html' as html;
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,323 +18,134 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final ScrollController _scrollController = ScrollController();
+  final Uri _linkedInUrl = Uri.parse('https://www.linkedin.com/login');
+  final Uri _githubUrl = Uri.parse('https://github.com/login');
+  final String _cvLink = "assets/resume-example.pdf";
+  double barWidth = 0;
+  int hoveredIndex = -1;
 
   @override
   Widget build(BuildContext context) {
-    var widthRes = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.grey.shade100.withOpacity(0.1),
       appBar: AppBar(
+        backgroundColor: Colors.blue.shade100,
         automaticallyImplyLeading: false,
-        title: const Text("My Portfolio"),
-        elevation: 10,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (Responsive.isDesktop(context))
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _buildMenuItem("Home", 0),
+                  const SizedBox(width: 10),
+                  _buildMenuItem("About", 1),
+                  const SizedBox(width: 10),
+                  _buildMenuItem("Services", 2),
+                  const SizedBox(width: 10),
+                  _buildMenuItem("Projects", 3),
+                  const SizedBox(width: 10),
+                  _buildMenuItem("Contact", 4),
+                ],
+              ),
+          ],
+        ),
         actions: [
-          if (Responsive.isDesktop(context))
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _buildMenuItem("About", 0),
-                const SizedBox(width: 10),
-                _buildMenuItem("Services", 1),
-                const SizedBox(width: 10),
-                _buildMenuItem("Projects", 2),
-                const SizedBox(width: 10),
-                _buildMenuItem("Contact", 3),
-              ],
-            ),
           if (Responsive.isMobile(context) || Responsive.isTablet(context))
             PopupMenuButton<String>(
               icon: const Icon(Icons.menu),
               onSelected: (value) {
-                _scrollToSection(value);
+                _scrollToSection(int.parse(value));
               },
               itemBuilder: (context) => [
-                _buildPopupMenuItem("About", "about"),
-                _buildPopupMenuItem("Services", "services"),
-                _buildPopupMenuItem("Projects", "projects"),
-                _buildPopupMenuItem("Contact", "contact"),
+                _buildPopupMenuItem("Home", 0),
+                _buildPopupMenuItem("About", 1),
+                _buildPopupMenuItem("Services", 2),
+                _buildPopupMenuItem("Projects", 3),
+                _buildPopupMenuItem("Contact", 4),
               ],
             ),
         ],
+        elevation: 10,
       ),
-      body: Center(
-        child: ListView(
-          controller: _scrollController,
-          children: [
-            Responsive.isMobile(context)
-                ? Padding(
-                    padding: const EdgeInsets.all(28.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.all(0),
-                          height: 370,
-                          width: 370,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                              image: AssetImage("assets/profile-pic.png"),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 25,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(18.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const Text(
-                                "Hello, I'm",
-                                style:
-                                    TextStyle(fontSize: 17, color: Colors.grey),
-                              ),
-                              const Text(
-                                "John Doe",
-                                style: TextStyle(
-                                    fontSize: 35,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              const Text(
-                                "FrontEnd Developer",
-                                style: TextStyle(
-                                  fontSize: 24,
-                                  color: Colors.grey,
-                                  fontWeight: FontWeight.w100,
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 15,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  InkWell(
-                                    onTap: () {},
-                                    child: Container(
-                                      height: 50,
-                                      width: widthRes * 0.32,
-                                      decoration: BoxDecoration(
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(25)),
-                                          border: Border.all(
-                                              color: Colors.black, width: 1)),
-                                      child: const Center(
-                                          child: Text("Download CV")),
-                                    ),
-                                  ),
-                                  const SizedBox(width: 10),
-                                  InkWell(
-                                    onTap: () {},
-                                    child: Container(
-                                      height: 50,
-                                      width: widthRes * 0.32,
-                                      decoration: const BoxDecoration(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(25)),
-                                          color: Colors.black87),
-                                      child: const Center(
-                                          child: Text(
-                                        "Contact Info",
-                                        style: TextStyle(color: Colors.white),
-                                      )),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    height: 30,
-                                    width: 30,
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                "assets/linkedin.png"))),
-                                  ),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  Container(
-                                    height: 30,
-                                    width: 30,
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                "assets/github.png"))),
-                                  )
-                                ],
-                              )
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  )
-                : const SizedBox.shrink(),
-            Responsive.isDesktop(context)
-                ? const DeskTopScreen()
-                : const SizedBox.shrink(),
-            Responsive.isTablet(context)
-                ? Padding(
-                    padding: const EdgeInsets.all(28.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.all(0),
-                          height: 370,
-                          width: 370,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                              image: AssetImage("assets/profile-pic.png"),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(18.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const Text(
-                                "Hello, I'm",
-                                style:
-                                    TextStyle(fontSize: 17, color: Colors.grey),
-                              ),
-                              const Text(
-                                "John Doe",
-                                style: TextStyle(
-                                  fontSize: 35,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: AppData.fontName,
-                                ),
-                              ),
-                              const Text(
-                                "FrontEnd Developer",
-                                style: TextStyle(
-                                  fontSize: 24,
-                                  color: Colors.grey,
-                                  fontWeight: FontWeight.w100,
-                                  fontFamily: AppData.fontName,
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  InkWell(
-                                    onTap: () {},
-                                    child: Container(
-                                      height: 50,
-                                      width: 130,
-                                      decoration: BoxDecoration(
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(25)),
-                                          border: Border.all(
-                                              color: Colors.black, width: 1)),
-                                      child: const Center(
-                                          child: Text(
-                                        "Download CV",
-                                        style: TextStyle(
-                                          fontFamily: AppData.fontName,
-                                        ),
-                                      )),
-                                    ),
-                                  ),
-                                  const SizedBox(width: 10),
-                                  InkWell(
-                                    onTap: () {},
-                                    child: Container(
-                                      height: 50,
-                                      width: 130,
-                                      decoration: const BoxDecoration(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(25)),
-                                          color: Colors.black87),
-                                      child: const Center(
-                                          child: Text(
-                                        "Contact Info",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontFamily: AppData.fontName,
-                                        ),
-                                      )),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    height: 30,
-                                    width: 30,
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                "assets/linkedin.png"))),
-                                  ),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  Container(
-                                    height: 30,
-                                    width: 30,
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                "assets/github.png"))),
-                                  )
-                                ],
-                              )
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  )
-                : SizedBox.shrink(),
-          ],
-        ),
-      ),
+      body: Responsive.isMobile(context) || Responsive.isTablet(context)
+          ? SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              controller: _scrollController,
+              child: Column(
+                children: [
+                  // Section 0: About
+                  _buildSection("Home", Colors.blue),
+                  // Section 0: About
+                  _buildSection("About", Colors.blue),
+
+                  // Section 1: Services
+                  _buildSection("Services", Colors.green),
+
+                  // Section 2: Projects
+                  _buildSection("Projects", Colors.orange),
+
+                  // Section 3: Contact
+                  _buildSection("Contact", Colors.red),
+                ],
+              ),
+            )
+          : SingleChildScrollView(
+              controller: _scrollController,
+              physics: const BouncingScrollPhysics(),
+              child: Column(
+                children: [
+                  HomeSection(
+                    tapContactInfoCallback: () {
+                      _scrollToSection(4);
+                    },
+                    linkedInTapCallBack: () async {
+                      await _launchLinkedInUrl();
+                    },
+                    githubTapCallBack: () async {
+                      await _launchGitHubUrl();
+                    },
+                    getCvLink: () {
+                      html.window.open(_cvLink, "text");
+                    },
+                  ),
+                  const AboutUserSection(),
+                  const ServicesSection(),
+                  const ProjectsSection(),
+                  const ContactSection(),
+                ],
+              ),
+            ),
     );
   }
 
-  void _scrollToSection(String section) {
-    int index = int.tryParse(section) ?? 0;
-    double scrollPosition =
-        index * 300.0; // Adjust this value based on your section height
+  Future<void> _launchCv() async {
+    if (await canLaunchUrl(Uri.file(_cvLink))) {
+      await launchUrl(Uri.file(_cvLink));
+    } else {
+      print("Error");
+    }
+  }
+
+  Future<void> _launchLinkedInUrl() async {
+    if (!await launchUrl(_linkedInUrl)) {
+      print("Cant launch");
+    }
+  }
+
+  Future<void> _launchGitHubUrl() async {
+    if (!await launchUrl(_githubUrl)) {
+      print("Cant launch");
+    }
+  }
+
+  void _scrollToSection(int section) {
+    double heightRes = MediaQuery.of(context).size.height;
+    double sectionHeight = heightRes * 0.75;
+    //   int index = int.tryParse(section) ?? 0;
+    double scrollPosition = section *
+        sectionHeight; // Adjust this value based on your section height
     _scrollController.animateTo(
       scrollPosition,
       duration: const Duration(seconds: 1),
@@ -337,29 +154,74 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildMenuItem(String title, int index) {
-    return TextButton(
-      onPressed: () {
-        _scrollToSection(index.toString());
+    return MouseRegion(
+      onEnter: (event) {
+        setState(() {
+          hoveredIndex = index;
+        });
       },
-      child: Text(title),
+      onHover: (event) {
+        // Set the width of the bar under the text when hovering
+        setState(() {
+          // You can adjust the width as needed
+          barWidth = 50.0;
+          hoveredIndex = index;
+        });
+      },
+      onExit: (event) {
+        // Reset the width when not hovering
+        setState(() {
+          barWidth = 0.0;
+          hoveredIndex = -1;
+        });
+      },
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          TextButton(
+            onPressed: () {
+              _scrollToSection(index);
+            },
+            child: Text(
+              title,
+              style: TextStyle(
+                color: hoveredIndex == index ? Colors.blue : Colors.black,
+              ),
+            ),
+          ),
+          Container(
+            height: 2.0,
+            width: barWidth,
+            color: hoveredIndex == index ? Colors.blue : Colors.transparent,
+            margin: const EdgeInsets.only(top: 8.0),
+          ),
+        ],
+      ),
     );
   }
 
-  PopupMenuItem<String> _buildPopupMenuItem(String title, String value) {
+  PopupMenuItem<String> _buildPopupMenuItem(String title, int index) {
     return PopupMenuItem(
-      value: value,
-      child: Text(title),
+      child: Column(
+        children: [
+          Text(title),
+        ],
+      ),
+      onTap: () {
+        _scrollToSection(index);
+      },
     );
   }
 
   Widget _buildSection(String title, Color color) {
+    double heightRes = MediaQuery.of(context).size.height;
     return Container(
-      height: 300, // Adjust the height as needed
+      height: heightRes * 0.75,
       color: color,
       alignment: Alignment.center,
       child: Text(
         title,
-        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
       ),
     );
   }
