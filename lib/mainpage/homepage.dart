@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage> {
   final String _cvLink = "assets/resume-example.pdf";
   double barWidth = 0;
   int hoveredIndex = -1;
+  int activeSectionIndex = -1; // Add this line
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +99,11 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   HomeSection(
                     tapContactInfoCallback: () {
-                      _scrollToSection(4);
+                      setState(() {
+                        _scrollToSection(4);
+
+                        activeSectionIndex = 4; // Update activeSectionIndex
+                      });
                     },
                     linkedInTapCallBack: () async {
                       await _launchLinkedInUrl();
@@ -181,11 +186,18 @@ class _HomePageState extends State<HomePage> {
           TextButton(
             onPressed: () {
               _scrollToSection(index);
+              setState(() {
+                activeSectionIndex = index; // Update activeSectionIndex
+              });
             },
             child: Text(
               title,
               style: TextStyle(
-                color: hoveredIndex == index ? Colors.blue : Colors.black,
+                color: activeSectionIndex == index
+                    ? Colors.blue
+                    : hoveredIndex == index
+                        ? Colors.blue
+                        : Colors.black,
               ),
             ),
           ),
