@@ -20,15 +20,17 @@ class MobileHomePage extends StatelessWidget {
     double widthRes = MediaQuery.of(context).size.width;
     double heightRes = MediaQuery.of(context).size.height;
     return SizedBox(
-      height: heightRes * 0.85,
+      height: heightRes * 0.75,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
           ProfilePicAnimation(
             shadowColor: Colors.blueAccent,
             child: Container(
+              // height: heightRes * 0.710,
+              // width: widthRes * 0.670,
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(

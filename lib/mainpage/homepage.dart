@@ -4,7 +4,11 @@ import 'package:portfolio/desktop/contact_section.dart';
 import 'package:portfolio/desktop/home_section.dart';
 import 'package:portfolio/desktop/projects_section.dart';
 import 'package:portfolio/desktop/services_section.dart';
+import 'package:portfolio/mobile/mobile_about_section.dart';
+import 'package:portfolio/mobile/mobile_contact_section.dart';
 import 'package:portfolio/mobile/mobile_home_Section.dart';
+import 'package:portfolio/mobile/mobile_projects_section.dart';
+import 'package:portfolio/mobile/mobile_services_Section.dart';
 import 'package:portfolio/responsive.dart';
 import 'package:url_launcher/url_launcher.dart';
 // ignore: avoid_web_libraries_in_flutter
@@ -31,6 +35,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
+        shadowColor: Colors.blueAccent,
         backgroundColor: Colors.blue.shade100,
         automaticallyImplyLeading: false,
         title: Row(
@@ -76,8 +81,9 @@ class _HomePageState extends State<HomePage> {
               physics: const BouncingScrollPhysics(),
               controller: _scrollController,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // Section 0: Home
                   MobileHomePage(
                     tapContactInfoCallback: () {
                       setState(() {
@@ -96,16 +102,17 @@ class _HomePageState extends State<HomePage> {
                     },
                   ),
                   // Section 0: About
-                  _buildSection("About", Colors.blue),
+                  const MobileAboutUserSection(),
 
                   // Section 1: Services
-                  _buildSection("Services", Colors.green),
+                  // _buildSection("Projects", Colors.orange),
+                  const MobileServicesSection(),
 
                   // Section 2: Projects
-                  _buildSection("Projects", Colors.orange),
+                  const MobileProjectsSection(),
 
                   // Section 3: Contact
-                  _buildSection("Contact", Colors.red),
+                  const MobileContactSection()
                 ],
               ),
             )
@@ -230,19 +237,6 @@ class _HomePageState extends State<HomePage> {
       onTap: () {
         _scrollToSection(index);
       },
-    );
-  }
-
-  Widget _buildSection(String title, Color color) {
-    double heightRes = MediaQuery.of(context).size.height;
-    return Container(
-      height: heightRes * 0.75,
-      color: color,
-      alignment: Alignment.center,
-      child: Text(
-        title,
-        style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-      ),
     );
   }
 }

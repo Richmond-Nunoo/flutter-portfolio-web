@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 List techStacks = [
   "Flutter",
   "Node JS",
-  "Java",
   "Laravel",
   "Express",
   "React JS",
@@ -11,8 +10,6 @@ List techStacks = [
   "PHP",
   "MySQL",
   "Firebase",
-  "AppWrite",
-  "Supabase"
 ];
 
 class AboutUserSection extends StatelessWidget {
@@ -23,7 +20,7 @@ class AboutUserSection extends StatelessWidget {
     double widthRes = MediaQuery.of(context).size.width;
     double heightRes = MediaQuery.of(context).size.height;
     return SizedBox(
-       height: heightRes * 0.75,
+      height: heightRes * 0.75,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,

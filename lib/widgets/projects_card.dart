@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/responsive.dart';
 
 class ProjectCard extends StatelessWidget {
   final String projectDescription, projectTitle, projectImgUrl;
@@ -15,8 +16,12 @@ class ProjectCard extends StatelessWidget {
     double widthRes = MediaQuery.of(context).size.width;
     double heightRes = MediaQuery.of(context).size.height;
     return Container(
-      width: widthRes * 0.350,
-      height: heightRes * 0.580,
+      width: Responsive.isMobile(context) || Responsive.isTablet(context)
+          ? widthRes * 0.880
+          : widthRes * 0.350,
+      height: Responsive.isMobile(context) || Responsive.isTablet(context)
+          ? heightRes * 0.420
+          : heightRes * 0.580,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(10)),
         color: Colors.white,
@@ -25,7 +30,7 @@ class ProjectCard extends StatelessWidget {
       child: Column(
         children: [
           Expanded(
-              flex: 2,
+              flex: 1,
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.only(

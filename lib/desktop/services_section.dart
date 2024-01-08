@@ -54,10 +54,7 @@ class ServicesSection extends StatelessWidget {
                           Padding(
                               padding: EdgeInsets.only(bottom: 12, top: 6),
                               child: FaIcon(FontAwesomeIcons.mobileScreen)
-                              // Icon(
-                              //   Icons.mobile_friendly,
-                              //   size: 38,
-                              // ),
+                     
                               ),
                           Text(
                             "Mobile App Development",

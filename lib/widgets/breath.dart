@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/responsive.dart';
 
 class ProfilePicAnimation extends StatefulWidget {
   final Widget child;
@@ -48,8 +49,13 @@ class MyCustomWidgetState extends State<ProfilePicAnimation>
     double heightRes = MediaQuery.of(context).size.height;
     return Center(
       child: Container(
-        height: heightRes * 0.510,
-        width: widthRes * 0.370,
+        height: Responsive.isMobile(context) || Responsive.isTablet(context)
+            ? heightRes * 0.420
+            : heightRes * 0.470,
+        //
+        width: Responsive.isMobile(context) || Responsive.isTablet(context)
+            ? widthRes * 0.420
+            : widthRes * 0.350,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           boxShadow: [

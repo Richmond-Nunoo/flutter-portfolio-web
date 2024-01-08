@@ -38,6 +38,9 @@ dependencies:
   google_fonts: ^6.1.0
   url_launcher: ^6.2.2
   font_awesome_flutter: ^10.6.0
+  another_flutter_splash_screen: ^1.2.0
+
+
 
 dev_dependencies:
   flutter_test:
