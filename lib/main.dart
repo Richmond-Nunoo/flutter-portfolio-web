@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/constants/app_constants.dart';
 import 'package:portfolio/mainpage/homepage.dart';
 
-
+//https://659c6f26968b562d92455192--celebrated-taiyaki-354cfd.netlify.app/
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   if (kIsWeb) {
@@ -26,8 +26,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: AppData.fontName,
       ),
-      home:const HomePage(),
-   
+      home: const HomePage(),
     );
   }
 }
