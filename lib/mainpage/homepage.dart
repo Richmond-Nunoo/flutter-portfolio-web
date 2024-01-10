@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
 
   double barWidth = 0;
   int hoveredIndex = -1;
-  int activeSectionIndex = -1; // Add this line
+  int activeSectionIndex = -1;
   int countIncrease = 1;
 
   @override
@@ -33,7 +33,6 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
-        shadowColor: Colors.blueAccent,
         backgroundColor: Colors.blue.shade100,
         automaticallyImplyLeading: false,
         title: Row(
@@ -135,11 +134,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   void openPdf() async {
-    String pdfAssetPath = AppData.cvLink;
-    final Uri uri = Uri.file(pdfAssetPath);
-
     try {
-      await launchUrl(uri);
+      await launchUrl(AppData.cvUrl);
     } catch (e) {
       print('Error launching PDF: $e');
     }
