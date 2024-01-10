@@ -25,7 +25,6 @@ class ProjectCard extends StatelessWidget {
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(10)),
         color: Colors.white,
-        boxShadow: [BoxShadow(color: Colors.blueAccent, blurRadius: 2)],
       ),
       child: Column(
         children: [

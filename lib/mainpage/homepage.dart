@@ -75,75 +75,67 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
         ],
-        elevation: 10,
       ),
       body: Responsive.isMobile(context) || Responsive.isTablet(context)
-          ? SingleChildScrollView(
+          ? ListView(
               physics: const BouncingScrollPhysics(),
               controller: _scrollController,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  MobileHomePage(
-                    tapContactInfoCallback: () {
-                      setState(() {
-                        _scrollToSection(4);
-                        activeSectionIndex = 4;
-                      });
-                    },
-                    linkedInTapCallBack: () async {
-                      await _launchLinkedInUrl();
-                    },
-                    githubTapCallBack: () async {
-                      await _launchGitHubUrl();
-                    },
-                    getCvLink: () {
-                      openPdf();
-                    },
-                  ),
-                  const MobileAboutUserSection(),
-                  const MobileServicesSection(),
-                  const MobileProjectsSection(),
-                  const MobileContactSection()
-                ],
-              ),
+              children: [
+                MobileHomePage(
+                  tapContactInfoCallback: () {
+                    setState(() {
+                      _scrollToSection(4);
+                      activeSectionIndex = 4;
+                    });
+                  },
+                  linkedInTapCallBack: () async {
+                    await _launchLinkedInUrl();
+                  },
+                  githubTapCallBack: () async {
+                    await _launchGitHubUrl();
+                  },
+                  getCvLink: () {
+                    openPdf();
+                  },
+                ),
+                const MobileAboutUserSection(),
+                const MobileServicesSection(),
+                const MobileProjectsSection(),
+                const MobileContactSection(),
+              ],
             )
-          : SingleChildScrollView(
+          : ListView(
               controller: _scrollController,
               physics: const BouncingScrollPhysics(),
-              child: Column(
-                children: [
-                  HomeSection(
-                    tapContactInfoCallback: () {
-                      setState(() {
-                        _scrollToSection(4);
-                        activeSectionIndex = 4; // Update activeSectionIndex
-                      });
-                    },
-                    linkedInTapCallBack: () async {
-                      await _launchLinkedInUrl();
-                    },
-                    githubTapCallBack: () async {
-                      await _launchGitHubUrl();
-                    },
-                    getCvLink: () {
-                      openPdf();
-                    },
-                  ),
-                  const AboutUserSection(),
-                  const ServicesSection(),
-                  const ProjectsSection(),
-                  const ContactSection(),
-                ],
-              ),
+              children: [
+                HomeSection(
+                  tapContactInfoCallback: () {
+                    setState(() {
+                      _scrollToSection(4);
+                      activeSectionIndex = 4;
+                    });
+                  },
+                  linkedInTapCallBack: () async {
+                    await _launchLinkedInUrl();
+                  },
+                  githubTapCallBack: () async {
+                    await _launchGitHubUrl();
+                  },
+                  getCvLink: () {
+                    openPdf();
+                  },
+                ),
+                const AboutUserSection(),
+                const ServicesSection(),
+                const ProjectsSection(),
+                const ContactSection(),
+              ],
             ),
     );
   }
 
   void openPdf() async {
     String pdfAssetPath = AppData.cvLink;
-
     final Uri uri = Uri.file(pdfAssetPath);
 
     try {
@@ -167,7 +159,7 @@ class _HomePageState extends State<HomePage> {
 
   void _scrollToSection(int section) {
     double heightRes = MediaQuery.of(context).size.height;
-    double sectionHeight = heightRes * 0.70;
+    double sectionHeight = heightRes * 0.78;
     double scrollPosition = section * sectionHeight;
     _scrollController.animateTo(
       scrollPosition,
