@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/constants/app_constants.dart';
 import 'package:portfolio/desktop/about_section.dart';
 import 'package:portfolio/desktop/contact_section.dart';
 import 'package:portfolio/desktop/home_section.dart';
@@ -11,8 +12,7 @@ import 'package:portfolio/mobile/mobile_projects_section.dart';
 import 'package:portfolio/mobile/mobile_services_Section.dart';
 import 'package:portfolio/responsive.dart';
 import 'package:url_launcher/url_launcher.dart';
-// ignore: avoid_web_libraries_in_flutter
-import 'dart:html' as html;
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -23,12 +23,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final ScrollController _scrollController = ScrollController();
-  final Uri _linkedInUrl = Uri.parse('https://www.linkedin.com/login');
-  final Uri _githubUrl = Uri.parse('https://github.com/login');
-  final String _cvLink = "assets/resume-example.pdf";
+
   double barWidth = 0;
   int hoveredIndex = -1;
   int activeSectionIndex = -1; // Add this line
+  int countIncrease = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +87,7 @@ class _HomePageState extends State<HomePage> {
                     tapContactInfoCallback: () {
                       setState(() {
                         _scrollToSection(4);
-                        activeSectionIndex = 4; // Update activeSectionIndex
+                        activeSectionIndex = 4;
                       });
                     },
                     linkedInTapCallBack: () async {
@@ -98,20 +97,12 @@ class _HomePageState extends State<HomePage> {
                       await _launchGitHubUrl();
                     },
                     getCvLink: () {
-                      html.window.open(_cvLink, "text");
+                      openPdf();
                     },
                   ),
-                  // Section 0: About
                   const MobileAboutUserSection(),
-
-                  // Section 1: Services
-                  // _buildSection("Projects", Colors.orange),
                   const MobileServicesSection(),
-
-                  // Section 2: Projects
                   const MobileProjectsSection(),
-
-                  // Section 3: Contact
                   const MobileContactSection()
                 ],
               ),
@@ -135,7 +126,7 @@ class _HomePageState extends State<HomePage> {
                       await _launchGitHubUrl();
                     },
                     getCvLink: () {
-                      html.window.open(_cvLink, "text");
+                      openPdf();
                     },
                   ),
                   const AboutUserSection(),
@@ -148,24 +139,34 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  void openPdf() async {
+    String pdfAssetPath = AppData.cvLink;
+
+    final Uri uri = Uri.file(pdfAssetPath);
+
+    try {
+      await launchUrl(uri);
+    } catch (e) {
+      print('Error launching PDF: $e');
+    }
+  }
+
   Future<void> _launchLinkedInUrl() async {
-    if (!await launchUrl(_linkedInUrl)) {
+    if (!await launchUrl(AppData.linkedInUrl)) {
       print("Cant launch");
     }
   }
 
   Future<void> _launchGitHubUrl() async {
-    if (!await launchUrl(_githubUrl)) {
+    if (!await launchUrl(AppData.githubUrl)) {
       print("Cant launch");
     }
   }
 
   void _scrollToSection(int section) {
     double heightRes = MediaQuery.of(context).size.height;
-    double sectionHeight = heightRes * 0.75;
-    //   int index = int.tryParse(section) ?? 0;
-    double scrollPosition = section *
-        sectionHeight; // Adjust this value based on your section height
+    double sectionHeight = heightRes * 0.70;
+    double scrollPosition = section * sectionHeight;
     _scrollController.animateTo(
       scrollPosition,
       duration: const Duration(seconds: 1),
@@ -181,15 +182,12 @@ class _HomePageState extends State<HomePage> {
         });
       },
       onHover: (event) {
-        // Set the width of the bar under the text when hovering
         setState(() {
-          // You can adjust the width as needed
           barWidth = 50.0;
           hoveredIndex = index;
         });
       },
       onExit: (event) {
-        // Reset the width when not hovering
         setState(() {
           barWidth = 0.0;
           hoveredIndex = -1;
@@ -202,7 +200,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               _scrollToSection(index);
               setState(() {
-                activeSectionIndex = index; // Update activeSectionIndex
+                activeSectionIndex = index;
               });
             },
             child: Text(

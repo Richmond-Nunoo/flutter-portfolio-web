@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/constants/app_constants.dart';
 import 'package:portfolio/widgets/breath.dart';
 
@@ -112,13 +113,13 @@ class HomeSection extends StatelessWidget {
                 children: [
                   InkWell(
                     onTap: linkedInTapCallBack,
-                    child: Container(
+                    child: const SizedBox(
                       height: 30,
                       width: 30,
-                      decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                              image: AssetImage("assets/linkedin.png"))),
+                      child: FaIcon(
+                        FontAwesomeIcons.linkedin,
+                        size: 35,
+                      ),
                     ),
                   ),
                   const SizedBox(
@@ -126,13 +127,13 @@ class HomeSection extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: githubTapCallBack,
-                    child: Container(
+                    child: const SizedBox(
                       height: 30,
                       width: 30,
-                      decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                              image: AssetImage("assets/github.png"))),
+                      child: FaIcon(
+                        FontAwesomeIcons.github,
+                        size: 35,
+                      ),
                     ),
                   )
                 ],

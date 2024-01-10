@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:portfolio/constants/app_constants.dart';
 
 class ContactSection extends StatelessWidget {
   const ContactSection({super.key});
@@ -40,15 +41,13 @@ class ContactSection extends StatelessWidget {
                       ),
                       const Padding(
                         padding: EdgeInsets.only(left: 50),
-                        child: Text(
-                          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt quisquam voluptatibus debitis aperiam ratione. Officia, suscipit iure, tenetur eum consequatur, consequuntur omnis accusamus odit quod pariatur excepturi architecto veniam. Soluta modi dignissimos libero blanditiis at saepe doloribus temporibus illo facilis dolorem, aliquam obcaecati accusamus nihil laboriosam, esse vel. Quod, vitae.",
-                        ),
+                        child: Text(AppData.contactSectiobDescripton),
                       ),
                       const SizedBox(
                         height: 50,
                       ),
                       ElevatedButton.icon(
-                        onPressed: () {},
+                        onPressed: () async {},
                         icon: const Icon(
                           Icons.mail,
                           color: Colors.black,

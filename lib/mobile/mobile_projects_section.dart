@@ -9,8 +9,9 @@ class MobileProjectsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     double heightRes = MediaQuery.of(context).size.height;
     return SizedBox(
-      height: heightRes * 0.99,
+      height: heightRes * 1.18,
       child: const Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Text(
             "Projects",

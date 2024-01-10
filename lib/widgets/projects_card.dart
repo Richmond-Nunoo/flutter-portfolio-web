@@ -20,17 +20,17 @@ class ProjectCard extends StatelessWidget {
           ? widthRes * 0.880
           : widthRes * 0.350,
       height: Responsive.isMobile(context) || Responsive.isTablet(context)
-          ? heightRes * 0.420
+          ? heightRes * 0.510
           : heightRes * 0.580,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(10)),
         color: Colors.white,
-        boxShadow: [BoxShadow(color: Colors.blueAccent, blurRadius: 10)],
+        boxShadow: [BoxShadow(color: Colors.blueAccent, blurRadius: 2)],
       ),
       child: Column(
         children: [
           Expanded(
-              flex: 1,
+              flex: 2,
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.only(
@@ -45,6 +45,7 @@ class ProjectCard extends StatelessWidget {
                 ),
               )),
           Expanded(
+            flex: 1,
             child: Container(
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),

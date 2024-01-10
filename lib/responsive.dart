@@ -12,8 +12,6 @@ class Responsive extends StatelessWidget {
     required this.desktop,
   }) : super(key: key);
 
-// This size work fine on my design, maybe you need some customization depends on your design
-
   static bool isMobile(BuildContext context) =>
       MediaQuery.of(context).size.width < 650;
 

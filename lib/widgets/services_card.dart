@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:portfolio/responsive.dart';
 
 class ServicesCard extends StatelessWidget {
   final String serviceTitle, serviceDescription;
@@ -16,11 +17,13 @@ class ServicesCard extends StatelessWidget {
     double heightRes = MediaQuery.of(context).size.height;
     return Container(
       width: widthRes * 0.880,
-      height: heightRes * 0.30,
+      height: Responsive.isMobile(context) || Responsive.isTablet(context)
+          ? heightRes * 0.250
+          : heightRes * 0.30,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(10)),
         color: Colors.white,
-        boxShadow: [BoxShadow(color: Colors.blueAccent, blurRadius: 10)],
+        boxShadow: [BoxShadow(color: Colors.blueAccent, blurRadius: 2)],
       ),
       child: Center(
         child: Column(
@@ -44,7 +47,6 @@ class ServicesCard extends StatelessWidget {
               padding: const EdgeInsets.all(4.0),
               child: Text(
                 serviceDescription,
-                
                 style: const TextStyle(fontSize: 11),
                 textAlign: TextAlign.center,
               ),

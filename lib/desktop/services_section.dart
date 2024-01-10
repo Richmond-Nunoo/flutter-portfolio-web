@@ -43,7 +43,7 @@ class ServicesSection extends StatelessWidget {
                       color: Colors.white,
                       //   border: Border.all(),
                       boxShadow: [
-                        BoxShadow(color: Colors.blueAccent, blurRadius: 10)
+                        BoxShadow(color: Colors.blueAccent, blurRadius: 2)
                       ],
                     ),
                     child: const Center(
@@ -53,9 +53,7 @@ class ServicesSection extends StatelessWidget {
                         children: [
                           Padding(
                               padding: EdgeInsets.only(bottom: 12, top: 6),
-                              child: FaIcon(FontAwesomeIcons.mobileScreen)
-                     
-                              ),
+                              child: FaIcon(FontAwesomeIcons.mobileScreen)),
                           Text(
                             "Mobile App Development",
                             style: TextStyle(
@@ -82,7 +80,7 @@ class ServicesSection extends StatelessWidget {
                       color: Colors.white,
                       //   border: Border.all(),
                       boxShadow: [
-                        BoxShadow(color: Colors.blueAccent, blurRadius: 10)
+                        BoxShadow(color: Colors.blueAccent, blurRadius: 2)
                       ],
                     ),
                     child: const Center(
@@ -123,7 +121,7 @@ class ServicesSection extends StatelessWidget {
                       color: Colors.white,
                       //   border: Border.all(),
                       boxShadow: [
-                        BoxShadow(color: Colors.blueAccent, blurRadius: 10)
+                        BoxShadow(color: Colors.blueAccent, blurRadius: 2)
                       ],
                     ),
                     child: const Center(

@@ -18,7 +18,7 @@ class ProjectsSection extends StatelessWidget {
           ),
           Text(
             "(Some built Projects)",
-            style: TextStyle(fontSize: 14),
+            style: TextStyle(fontSize: 12, color: Colors.grey),
           ),
           Padding(
             padding: EdgeInsets.all(8.0),

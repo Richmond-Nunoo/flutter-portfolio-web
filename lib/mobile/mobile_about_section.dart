@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/constants/app_constants.dart';
 import 'package:portfolio/desktop/about_section.dart';
 
 class MobileAboutUserSection extends StatelessWidget {
@@ -8,7 +9,7 @@ class MobileAboutUserSection extends StatelessWidget {
   Widget build(BuildContext context) {
     double heightRes = MediaQuery.of(context).size.height;
     return SizedBox(
-      height: heightRes * 0.70,
+      height: heightRes * 0.60,
       child: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(
@@ -34,7 +35,7 @@ class MobileAboutUserSection extends StatelessWidget {
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(
-                      "assets/about.png",
+                          AppData.aboutSectionImg,
                     ),
                     //  fit: BoxFit.fill,
                   ),
@@ -49,7 +50,7 @@ class MobileAboutUserSection extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Text(
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+                         AppData.aboutSectiobDescripton,
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 12),
                   ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/constants/app_constants.dart';
 import 'package:portfolio/widgets/breath.dart';
 
@@ -29,8 +30,6 @@ class MobileHomePage extends StatelessWidget {
           ProfilePicAnimation(
             shadowColor: Colors.blueAccent,
             child: Container(
-              // height: heightRes * 0.710,
-              // width: widthRes * 0.670,
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
@@ -115,27 +114,27 @@ class MobileHomePage extends StatelessWidget {
                 children: [
                   InkWell(
                     onTap: linkedInTapCallBack,
-                    child: Container(
+                    child: const SizedBox(
                       height: 30,
                       width: 30,
-                      decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                              image: AssetImage("assets/linkedin.png"))),
+                      child: FaIcon(
+                        FontAwesomeIcons.linkedin,
+                        size: 35,
+                      ),
                     ),
                   ),
                   const SizedBox(
-                    width: 10,
+                    width: 12,
                   ),
                   InkWell(
                     onTap: githubTapCallBack,
-                    child: Container(
+                    child: const SizedBox(
                       height: 30,
                       width: 30,
-                      decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                              image: AssetImage("assets/github.png"))),
+                      child: FaIcon(
+                        FontAwesomeIcons.github,
+                        size: 35,
+                      ),
                     ),
                   )
                 ],

@@ -10,7 +10,7 @@ class MobileServicesSection extends StatelessWidget {
   Widget build(BuildContext context) {
     double heightRes = MediaQuery.of(context).size.height;
     return SizedBox(
-      height: heightRes * 1.1,
+      height: heightRes * 0.95,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -42,7 +42,7 @@ class MobileServicesSection extends StatelessWidget {
           ServicesCard(
             serviceTitle: 'Website Development',
             serviceDescription: AppData.servicesDescription,
-            serviceIcon: AppData.mobileServiceIcon,
+            serviceIcon: AppData.mobileServiceIcon2,
           ),
           const SizedBox(
             height: 15,
@@ -50,7 +50,7 @@ class MobileServicesSection extends StatelessWidget {
           ServicesCard(
             serviceTitle: 'Consulting Services',
             serviceDescription: AppData.servicesDescription,
-            serviceIcon: AppData.mobileServiceIcon,
+            serviceIcon: AppData.mobileServiceIcon3,
           ),
         ],
       ),
