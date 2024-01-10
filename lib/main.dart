@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:portfolio/mainpage/homepage.dart';
 
-//https://659c6f26968b562d92455192--celebrated-taiyaki-354cfd.netlify.app/
+//https://659e9af35ad9f6ef681fbf00--frolicking-sherbet-86bc34.netlify.app/
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
