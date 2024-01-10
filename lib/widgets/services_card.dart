@@ -31,11 +31,11 @@ class ServicesCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: const EdgeInsets.only(bottom: 12, top: 12),
+              padding: const EdgeInsets.only(bottom: 6, top: 4),
               child: serviceIcon,
             ),
             Padding(
-              padding: const EdgeInsets.only(bottom: 8.0),
+              padding: const EdgeInsets.only(bottom: 4.0),
               child: Text(
                 serviceTitle,
                 style:

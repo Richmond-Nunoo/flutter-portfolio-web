@@ -13,7 +13,6 @@ import 'package:portfolio/mobile/mobile_services_Section.dart';
 import 'package:portfolio/responsive.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -60,7 +59,10 @@ class _HomePageState extends State<HomePage> {
         actions: [
           if (Responsive.isMobile(context) || Responsive.isTablet(context))
             PopupMenuButton<String>(
-              icon: const Icon(Icons.menu),
+              icon: const Icon(
+                Icons.menu,
+                color: Colors.black,
+              ),
               onSelected: (value) {
                 _scrollToSection(int.parse(value));
               },

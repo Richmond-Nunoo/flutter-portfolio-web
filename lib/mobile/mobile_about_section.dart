@@ -9,7 +9,7 @@ class MobileAboutUserSection extends StatelessWidget {
   Widget build(BuildContext context) {
     double heightRes = MediaQuery.of(context).size.height;
     return SizedBox(
-      height: heightRes * 0.60,
+      height: heightRes * 0.75,
       child: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(
@@ -35,7 +35,7 @@ class MobileAboutUserSection extends StatelessWidget {
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(
-                          AppData.aboutSectionImg,
+                      AppData.aboutSectionImg,
                     ),
                     //  fit: BoxFit.fill,
                   ),
@@ -50,7 +50,7 @@ class MobileAboutUserSection extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Text(
-                         AppData.aboutSectiobDescripton,
+                    AppData.aboutSectiobDescripton,
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 12),
                   ),

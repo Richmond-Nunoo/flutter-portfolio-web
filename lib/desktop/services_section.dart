@@ -41,7 +41,6 @@ class ServicesSection extends StatelessWidget {
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                       color: Colors.white,
-                      //   border: Border.all(),
                       boxShadow: [
                         BoxShadow(color: Colors.blueAccent, blurRadius: 2)
                       ],

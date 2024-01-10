@@ -22,126 +22,135 @@ class MobileHomePage extends StatelessWidget {
     double heightRes = MediaQuery.of(context).size.height;
     return SizedBox(
       height: heightRes * 0.75,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          ProfilePicAnimation(
-            shadowColor: Colors.blueAccent,
-            child: Container(
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: AssetImage(AppData.profileImageUrl),
+      child: Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ProfilePicAnimation(
+              shadowColor: Colors.blueAccent,
+              child: Container(
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: AssetImage(AppData.profileImageUrl),
+                  ),
                 ),
               ),
             ),
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Text(
-                "Hello, I'm",
-                style: TextStyle(fontSize: 17, color: Colors.grey),
-              ),
-              const Text(
-                "John Doe",
-                style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
-              ),
-              const Text(
-                "Flutter Developer",
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.grey,
-                  fontWeight: FontWeight.w100,
+            const SizedBox(
+              height: 10,
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Text(
+                  "Hello, I'm",
+                  style: TextStyle(fontSize: 17, color: Colors.grey),
                 ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  InkWell(
-                    onTap: getCvLink,
-                    radius: 25,
-                    child: Container(
-                      height: heightRes * 0.05,
-                      width: widthRes * 0.28,
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(25)),
-                          border: Border.all(color: Colors.black, width: 1)),
-                      child: const Center(
-                          child: Text(
-                        "Download CV",
-                        style: TextStyle(fontSize: 11),
-                      )),
-                    ),
+                const Text(
+                  "John Doe",
+                  style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
+                ),
+                const Text(
+                  "Flutter Developer",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w100,
                   ),
-                  InkWell(
-                    onTap: tapContactInfoCallback,
-                    radius: 25,
-                    child: Container(
-                      margin: const EdgeInsets.all(5),
-                      height: heightRes * 0.05,
-                      width: widthRes * 0.28,
-                      decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(25)),
-                          color: Colors.black87),
-                      child: const Center(
-                        child: Text(
-                          "Contact Info",
-                          style: TextStyle(color: Colors.white, fontSize: 11),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    InkWell(
+                      onTap: getCvLink,
+                      radius: 25,
+                      child: Container(
+                        height: heightRes * 0.05,
+                        width: widthRes * 0.28,
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(25)),
+                            border: Border.all(color: Colors.black, width: 1)),
+                        child: const Center(
+                            child: Text(
+                          "Download CV",
+                          style: TextStyle(fontSize: 11),
+                        )),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: tapContactInfoCallback,
+                      radius: 25,
+                      child: Container(
+                        margin: const EdgeInsets.all(5),
+                        height: heightRes * 0.05,
+                        width: widthRes * 0.28,
+                        decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(25)),
+                            color: Colors.black87),
+                        child: const Center(
+                          child: Text(
+                            "Contact Info",
+                            style: TextStyle(color: Colors.white, fontSize: 11),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  InkWell(
-                    onTap: linkedInTapCallBack,
-                    child: const SizedBox(
-                      height: 30,
-                      width: 30,
-                      child: FaIcon(
-                        FontAwesomeIcons.linkedin,
-                        size: 35,
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    InkWell(
+                      onTap: linkedInTapCallBack,
+                      child: const SizedBox(
+                        height: 30,
+                        width: 30,
+                        child: FaIcon(
+                          FontAwesomeIcons.linkedin,
+                          size: 35,
+                        ),
                       ),
                     ),
-                  ),
-                  const SizedBox(
-                    width: 12,
-                  ),
-                  InkWell(
-                    onTap: githubTapCallBack,
-                    child: const SizedBox(
-                      height: 30,
-                      width: 30,
-                      child: FaIcon(
-                        FontAwesomeIcons.github,
-                        size: 35,
-                      ),
+                    const SizedBox(
+                      width: 12,
                     ),
-                  )
-                ],
-              ),
-            ],
-          ),
-        ],
+                    InkWell(
+                      onTap: githubTapCallBack,
+                      child: const SizedBox(
+                        height: 30,
+                        width: 30,
+                        child: FaIcon(
+                          FontAwesomeIcons.github,
+                          size: 35,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+          ],
+        ),
       ),
     );
   }

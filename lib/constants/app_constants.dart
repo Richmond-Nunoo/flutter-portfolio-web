@@ -1,7 +1,7 @@
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AppData {
-  static const String profileImageUrl = "profile-pic-cat.jpg";
+  static const String profileImageUrl = "assets/profile.jpg";
   static const String aboutSectionImg = "assets/about.png";
   static const String projectDescription =
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s";
@@ -17,10 +17,10 @@ class AppData {
   static FaIcon mobileServiceIcon3 = const FaIcon(FontAwesomeIcons.peopleGroup);
   static Uri linkedInUrl = Uri.parse('https://www.linkedin.com/login');
   static Uri githubUrl = Uri.parse('https://github.com/login');
-  static const String cvLink = "assets/resume-example.pdf";
+  static const String cvLink = "assets/resume.pdf";
 
   static const aboutSectiobDescripton =
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ";
 
   static const contactSectiobDescripton =
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt quisquam voluptatibus debitis aperiam ratione. Officia, suscipit iure, tenetur eum consequatur, consequuntur omnis accusamus odit quod pariatur excepturi architecto veniam. Soluta modi dignissimos libero blanditiis at saepe doloribus temporibus illo facilis dolorem, aliquam obcaecati accusamus nihil laboriosam, esse vel. Quod, vitae.";

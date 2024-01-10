@@ -3,14 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:portfolio/mainpage/homepage.dart';
 
-//https://659e9af35ad9f6ef681fbf00--frolicking-sherbet-86bc34.netlify.app/
+//https://deft-crumble-708da9.netlify.app/
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
+
   if (kIsWeb) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     runApp(
       const MyApp(),
     );
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Potfolio',
+      title: 'Portfolio',
       theme: ThemeData(
         useMaterial3: false,
       ),
