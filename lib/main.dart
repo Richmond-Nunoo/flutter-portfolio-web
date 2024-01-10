@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:portfolio/mainpage/homepage.dart';
 
-//https://deft-crumble-708da9.netlify.app/
+//https://simple-potfolio.netlify.app
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
